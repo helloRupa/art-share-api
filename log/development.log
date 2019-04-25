@@ -1549,3 +1549,146 @@ Migrating to CreateComments (20190425004352)
   [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
   ↳ db/seeds.rb:9
   [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Started GET "/users/" for ::1 at 2019-04-25 16:42:52 -0700
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/flagpuppy/.rvm/gems/ruby-2.5.1/gems/better_errors-2.5.1/lib/better_errors/middleware.rb:84
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3
+Completed 200 OK in 33ms (Views: 8.7ms | ActiveRecord: 10.1ms)
+
+
+Started GET "/users/1/comments" for ::1 at 2019-04-25 16:43:03 -0700
+Processing by CommentsController#index as */*
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:4
+  [1m[36mComment Load (6.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/comments_controller.rb:4
+Completed 200 OK in 79ms (Views: 30.0ms | ActiveRecord: 23.9ms)
+
+
+Started GET "/users/2/comments" for ::1 at 2019-04-25 16:43:11 -0700
+Processing by CommentsController#index as */*
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:4
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/comments_controller.rb:4
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/3/comments" for ::1 at 2019-04-25 16:43:20 -0700
+Processing by CommentsController#index as */*
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:4
+  [1m[36mComment Load (3.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/controllers/comments_controller.rb:4
+Completed 200 OK in 12ms (Views: 5.1ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/artworks/1/comments" for ::1 at 2019-04-25 16:44:23 -0700
+Processing by CommentsController#index as */*
+  Parameters: {"artwork_id"=>"1"}
+  [1m[36mArtwork Load (1.5ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = $1[0m  [["artwork_id", 1]]
+  ↳ app/controllers/comments_controller.rb:6
+Completed 200 OK in 68ms (Views: 4.8ms | ActiveRecord: 13.4ms)
+
+
+Started GET "/artworks/2/comments" for ::1 at 2019-04-25 16:44:43 -0700
+Processing by CommentsController#index as */*
+  Parameters: {"artwork_id"=>"2"}
+  [1m[36mArtwork Load (0.9ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = $1[0m  [["artwork_id", 2]]
+  ↳ app/controllers/comments_controller.rb:6
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/artworks/3/comments" for ::1 at 2019-04-25 16:44:45 -0700
+Processing by CommentsController#index as */*
+  Parameters: {"artwork_id"=>"3"}
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = $1[0m  [["artwork_id", 3]]
+  ↳ app/controllers/comments_controller.rb:6
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/comments?artist_id=2" for ::1 at 2019-04-25 16:45:29 -0700
+Processing by CommentsController#create as */*
+  Parameters: {"artist_id"=>"2"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: comment:
+  app/controllers/comments_controller.rb:32:in `comment_params'
+  app/controllers/comments_controller.rb:11:in `create'
+
+Started POST "/comments?comment[artist_id]=2" for ::1 at 2019-04-25 16:45:39 -0700
+Processing by CommentsController#create as */*
+  Parameters: {"comment"=>{"artist_id"=>"2"}}
+Unpermitted parameter: :artist_id
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:13
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/comments_controller.rb:13
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 0.7ms)
+
+
+
+ArgumentError - '"User can't be blank"' is not an ActiveModel-compatible object. It must implement :to_partial_path.:
+  app/controllers/comments_controller.rb:16:in `create'
+
+Started POST "/comments?comment[artwork_id]=2&comment[user_id]=3" for ::1 at 2019-04-25 16:46:16 -0700
+Processing by CommentsController#create as */*
+  Parameters: {"comment"=>{"artwork_id"=>"2", "user_id"=>"3"}}
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:13
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:13
+  [1m[36mArtwork Load (1.6ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:13
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/comments_controller.rb:13
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 4.2ms)
+
+
+
+ArgumentError - '"Body can't be blank"' is not an ActiveModel-compatible object. It must implement :to_partial_path.:
+  app/controllers/comments_controller.rb:16:in `create'
+
+Started POST "/comments?comment[artwork_id]=2&comment[user_id]=3&comment[body]=Test%20comment" for ::1 at 2019-04-25 16:46:30 -0700
+Processing by CommentsController#create as */*
+  Parameters: {"comment"=>{"artwork_id"=>"2", "user_id"=>"3", "body"=>"Test comment"}}
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:13
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:13
+  [1m[36mArtwork Load (0.8ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:13
+  [1m[36mComment Create (3.6ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "artwork_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 3], ["artwork_id", 2], ["body", "Test comment"], ["created_at", "2019-04-25 23:46:30.290362"], ["updated_at", "2019-04-25 23:46:30.290362"]]
+  ↳ app/controllers/comments_controller.rb:13
+  [1m[35m (4.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:13
+Completed 200 OK in 19ms (Views: 0.6ms | ActiveRecord: 10.0ms)
+
+
+Started DELETE "/comments/4" for ::1 at 2019-04-25 16:46:54 -0700
+Processing by CommentsController#destroy as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:22
+  [1m[36mComment Destroy (1.5ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/comments_controller.rb:22
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:22
+Completed 200 OK in 16ms (Views: 1.0ms | ActiveRecord: 8.5ms)
+
+
