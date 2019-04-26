@@ -8,7 +8,7 @@
 
 ActiveRecord::Base.transaction do
   # Clear all tables and reset id value
-  [User, Artwork, ArtworkShare, Comment].each do |c|
+  [User, Artwork, ArtworkShare, Comment, Like].each do |c|
     ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{c.table_name} RESTART IDENTITY;")
   end
 
@@ -31,4 +31,9 @@ ActiveRecord::Base.transaction do
   Comment.create(artwork_id: 1, user_id: 2, body: 'Comment on art 1 by user 2')
   Comment.create(artwork_id: 1, user_id: 3, body: 'Comment on art 1 by user 3')
   Comment.create(artwork_id: 2, user_id: 1, body: 'Comment on art 2 by user 1')
+
+  # Create Likes (user_id, likeable_id, likeable_type)
+  Like.create(user_id: 1, likeable_id: 1, likeable_type: 'Artwork')
+  Like.create(user_id: 2, likeable_id: 1, likeable_type: 'Comment')
+  Like.create(user_id: 1, likeable_id: 1, likeable_type: 'Comment')
 end

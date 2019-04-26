@@ -22,4 +22,6 @@ class Artwork < ApplicationRecord
     primary_key: :id,
     foreign_key: :artwork_id,
     dependent: :destroy
+
+  has_many :likes, as: :likeable
 end
